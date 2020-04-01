@@ -1,0 +1,29 @@
+{
+    "name": "aw-studio/localize",
+    "description": "Translated Routes for Fjord Frontends",
+    "require": {
+        "astrotomic/laravel-translatable": "^11.1|^11.8"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jannes Behrens",
+            "email": "jannes@aw-studio.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AwStudio\\Localize\\": "src"
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AwStudio\\Localize\\LocalizationServiceProvider"
+            ]
+        }
+    }
+}
