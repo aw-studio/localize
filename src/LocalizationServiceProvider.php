@@ -22,6 +22,10 @@ class LocalizationServiceProvider extends ServiceProvider
     {
         $locales = $this->locales;
         Route::macro('trans', function ($route, $controller) use ($locales) {
+            if (is_array($controller)) {
+                $controller = $controller[0] . '@' . $controller[1];
+            }
+
             $routes = [];
             foreach ($locales as $locale) {
                 $routeString = $route;
