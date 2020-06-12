@@ -79,6 +79,11 @@ class LocalizationServiceProvider extends ServiceProvider
     private function localize($request)
     {
         $userLangs = preg_split('/,|;/', $request->server('HTTP_ACCEPT_LANGUAGE') ?? '');
+        
+        $userLangs = collect($userLangs)->map(function ($lng) {
+            return substr($lng, 0, 2);
+        })->toArray();
+        
         foreach ($userLangs as $userLang) {
             if (in_array($userLang, $this->locales)) {
                 redirect("/{$userLang}")->send();
